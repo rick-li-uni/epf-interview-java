@@ -1,0 +1,19 @@
+CREATE TABLE IF NOT EXISTS users (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    is_seller BOOLEAN DEFAULT FALSE
+);
+
+CREATE TABLE IF NOT EXISTS products (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    description TEXT,
+    price DECIMAL(10,2) NOT NULL,
+    seller_id BIGINT NOT NULL,
+    quantity INTEGER NOT NULL DEFAULT 0,
+    FOREIGN KEY (seller_id) REFERENCES users(id)
+); 
+
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO interview1;

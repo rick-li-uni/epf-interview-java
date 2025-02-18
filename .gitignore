@@ -1,0 +1,10 @@
+pg.sql
+.gradle
+.idea
+.vscode
+bin/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+!gradle/wrapper/gradle-wrapper.properties
+!**/src/main/**/build/
+!**/src/test/**/build/
