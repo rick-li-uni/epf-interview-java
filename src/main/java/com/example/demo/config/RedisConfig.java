@@ -2,11 +2,11 @@ package com.example.demo.config;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URL;
 import java.util.Properties;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.io.ClassPathResource;
 
 import io.lettuce.core.RedisClient;
 import io.lettuce.core.RedisURI;
@@ -16,6 +16,7 @@ import jakarta.annotation.PreDestroy;
 public class RedisConfig {
     private RedisClient redisClient;
     private Properties properties = new Properties();
+    private static final String PROPERTIES_PATH = "file:/Users/kl68884/projects/interviews/epf-interview/src/main/resources/database.properties";
 
     public RedisConfig() {
         loadProperties();
@@ -23,10 +24,13 @@ public class RedisConfig {
     }
 
     private void loadProperties() {
-        try (InputStream input = new ClassPathResource("database.properties").getInputStream()) {
-            properties.load(input);
+        try {
+            URL url = new URL(PROPERTIES_PATH);
+            try (InputStream input = url.openStream()) {
+                properties.load(input);
+            }
         } catch (IOException e) {
-            throw new RuntimeException("Error loading properties", e);
+            throw new RuntimeException("Error loading properties from " + PROPERTIES_PATH, e);
         }
     }
 
