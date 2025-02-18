@@ -1,12 +1,19 @@
 # EPF Interview
 
-## Setup
+## Import into IntelliJ
+
+
+
+
+
+
+## Run from terminal
 
 ```bash
 ./gradlew build
 ```
 
 ```bash
-./gradlew run
+./gradlew bootRun
 ```
 
