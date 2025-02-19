@@ -49,24 +49,6 @@ public class ProductRepository extends BaseRepository {
         return Optional.empty();
     }
 
-    public List<Product> findBySellerId(Long sellerId) {
-        List<Product> products = new ArrayList<>();
-        String sql = "SELECT * FROM products WHERE seller_id = ?";
-
-        try (Connection conn = getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
-
-            stmt.setLong(1, sellerId);
-            try (ResultSet rs = stmt.executeQuery()) {
-                while (rs.next()) {
-                    products.add(mapProduct(rs));
-                }
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException("Error finding products by seller id: " + sellerId, e);
-        }
-        return products;
-    }
 
     public Product save(Product product) {
         String sql = "INSERT INTO products (name, description, price, seller_id, quantity) VALUES (?, ?, ?, ?, ?)";
