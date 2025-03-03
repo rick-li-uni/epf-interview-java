@@ -14,8 +14,8 @@ repositories {
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    // implementation 'org.springframework.boot:spring-boot-starter-jdbc'
-    implementation 'org.postgresql:postgresql:42.7.2'
+    implementation 'org.apache.derby:derby:10.16.1.1'
+    implementation 'org.apache.derby:derbytools:10.15.2.0'
     implementation 'io.lettuce:lettuce-core:6.3.2.RELEASE'
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.15.2'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'

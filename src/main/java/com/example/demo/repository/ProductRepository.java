@@ -1,17 +1,12 @@
 package com.example.demo.repository;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import com.example.demo.model.Product;
+import org.springframework.stereotype.Component;
+
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
-import org.springframework.stereotype.Component;
-
-import com.example.demo.model.Product;
 
 @Component
 public class ProductRepository extends BaseRepository {

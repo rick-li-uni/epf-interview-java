@@ -25,7 +25,7 @@ public class DatabaseConfig {
                 Class.forName(properties.getProperty("db.driver"));
             }
         } catch (IOException | ClassNotFoundException e) {
-            throw new RuntimeException("Error loading database properties");
+            throw new RuntimeException("Error loading database properties", e);
         }
     }
 
