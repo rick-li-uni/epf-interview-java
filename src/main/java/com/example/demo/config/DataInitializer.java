@@ -118,6 +118,10 @@ public class DataInitializer {
             try (PreparedStatement pstmt = conn.prepareStatement(insertProductSQL)) {
                 for (int i = 1; i <= 100; i++) {
                     Integer sellerId = sellerIds.get(random.nextInt(sellerIds.size()));
+                    if(i == 1 || i == 2){
+                        sellerId = 1; //make sure user 1 has some products
+                    }
+
                     pstmt.setString(1, "Product" + i);
                     pstmt.setString(2, "Description for product " + i);
                     pstmt.setDouble(3, 20.0 + random.nextDouble() * 980.0);
